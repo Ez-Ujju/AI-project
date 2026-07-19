@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Crop Disease Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌿 Crop Disease Prediction System 🌿</h1>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+
+    <label for="leaf_image" class="custom-file-upload">
+    📷 Choose Leaf Image
+     </label>
+     <input  type="file"  id="leaf_image"  name="leaf_image"  accept="image/*"  required>    
+
+        <br><br>
+
+        <button type="submit">
+            Predict Disease
+        </button>
+
+    </form>
+
+    {% if uploaded_image %}
+        <h2>Uploaded Image</h2>
+        <img
+        src="{{ url_for('static', filename='uploads/' + uploaded_image) }}"
+        class="leaf">
+
+    {% endif %}
+
+    {% if disease %}
+
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <h3>{{ disease }}</h3>
+            <h3>Confidence : {{ confidence }}%</h3>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>
