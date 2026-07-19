@@ -9,3 +9,4 @@ test_image/
 static/uploads/
 
 .vscode/
+.README.md
